@@ -4,7 +4,7 @@
 
 ### Snapshot `0411261809`
 
-- Added `--reasoning-level` to configure the requested reasoning effort from the CLI.
+- Added `--reasoning-level` to configure the requested reasoning effort from the CLI with supported levels `minimal`, `low`, `medium`, and `high`; the default is `medium`.
 
 ### Snapshot `0410261708`
 
