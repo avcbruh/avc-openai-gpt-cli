@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-04-11
+
+### Snapshot `0410261708`
+
+- Added platform-aware shell execution guidance so model-requested commands target the active OS and shell.
+- Added a per-session command marker token and marker sanitization to prevent stale or user-supplied markers from triggering command execution.
+- Added truncation for large command output before feeding results back to the model while keeping full stdout and stderr in the log file.
+- Added `--log-dir` to choose where session log files are written.
+- Added `--prompt` for one-shot non-interactive execution.
+- Added `--hide-reasoning` to disable reasoning summary requests and printing.
+- Added reasoning summary extraction from Responses API output when reasoning is enabled.
+- Expanded `README.md` to include installation instructions plus the project license and notice text.
+- Added `.gitignore` entries for Python bytecode caches and `.log` files.
+- Removed tracked `__pycache__` and `.log` artifacts from the repository.
+
 ## 2026-04-10
 
 ### Snapshot `0410261005`
