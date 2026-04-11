@@ -23,9 +23,10 @@ COMMAND_TIMEOUT_SECONDS = 120
 MAX_MODEL_OUTPUT_CHARS = 12000
 MODEL_OUTPUT_HEAD_CHARS = 5000
 MODEL_OUTPUT_TAIL_CHARS = 5000
-VERSION = "gpt.py SNAPSHOT 0410261708"
+VERSION = "gpt.py SNAPSHOT 0411261809"
 SPINNER_FRAMES = ("/", "-", "\\", "|")
 SPINNER_INTERVAL_SECONDS = 0.1
+REASONING_EFFORT_LEVELS = ("minimal", "low", "medium", "high")
 
 
 def get_platform_name() -> str:
@@ -183,6 +184,12 @@ def parse_args() -> argparse.Namespace:
         "--hide-reasoning",
         action="store_true",
         help="Do not request or print reasoning summaries.",
+    )
+    parser.add_argument(
+        "--reasoning-level",
+        choices=REASONING_EFFORT_LEVELS,
+        default="medium",
+        help="Reasoning effort to request when reasoning is enabled.",
     )
     return parser.parse_args()
 
@@ -350,6 +357,7 @@ def prompt_loop(
     system_prompt: str,
     command_marker: str,
     show_reasoning: bool,
+    reasoning_level: str,
 ) -> None:
     """Run the interactive prompt loop until the user submits an empty prompt."""
     messages = build_initial_messages(system_prompt, command_marker)
@@ -363,7 +371,14 @@ def prompt_loop(
             print("\n\033[91mPrompt not defined. Exiting.\033[0m\n")
             break
         handled = handle_prompt(
-            client, model, log_file, messages, user_input, command_marker, show_reasoning
+            client,
+            model,
+            log_file,
+            messages,
+            user_input,
+            command_marker,
+            show_reasoning,
+            reasoning_level,
         )
         if not handled:
             continue
@@ -435,6 +450,7 @@ def create_response(
     model: str,
     messages: List[Dict[str, str]],
     show_reasoning: bool,
+    reasoning_level: str,
 ):
     """Create a Responses API request, optionally asking for reasoning summaries."""
     request_args = {
@@ -443,7 +459,7 @@ def create_response(
     }
     if show_reasoning:
         request_args["reasoning"] = {
-            "effort": "medium",
+            "effort": reasoning_level,
             "summary": "auto",
         }
     return run_with_spinner(lambda: client.responses.create(**request_args))
@@ -457,6 +473,7 @@ def handle_prompt(
     user_input: str,
     command_marker: str,
     show_reasoning: bool,
+    reasoning_level: str,
 ) -> bool:
     """Handle one user prompt, including optional shell execution follow-ups."""
     if user_input.casefold() == "lucky":
@@ -474,7 +491,9 @@ def handle_prompt(
     all_command_logs: List[str] = []
     try:
         while True:
-            response = create_response(client, model, messages, show_reasoning)
+            response = create_response(
+                client, model, messages, show_reasoning, reasoning_level
+            )
             reply = getattr(response, "output_text", "") or ""
             reasoning_summaries = iter_reasoning_summary_texts(response)
             replies.append(reply)
@@ -526,6 +545,7 @@ def run_single_prompt(
     user_prompt: str,
     command_marker: str,
     show_reasoning: bool,
+    reasoning_level: str,
 ) -> None:
     """Run a single prompt without entering the interactive loop."""
     prompt = user_prompt.strip()
@@ -533,7 +553,14 @@ def run_single_prompt(
         sys.exit("Cannot run empty prompt in non-interactive mode.")
     messages = build_initial_messages(system_prompt, command_marker)
     success = handle_prompt(
-        client, model, log_file, messages, prompt, command_marker, show_reasoning
+        client,
+        model,
+        log_file,
+        messages,
+        prompt,
+        command_marker,
+        show_reasoning,
+        reasoning_level,
     )
     if not success:
         sys.exit(1)
@@ -555,6 +582,7 @@ def main() -> None:
             args.prompt,
             command_marker,
             not args.hide_reasoning,
+            args.reasoning_level,
         )
     else:
         prompt_loop(
@@ -564,6 +592,7 @@ def main() -> None:
             args.system_prompt,
             command_marker,
             not args.hide_reasoning,
+            args.reasoning_level,
         )
 
 

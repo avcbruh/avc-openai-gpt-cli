@@ -2,6 +2,10 @@
 
 ## 2026-04-11
 
+### Snapshot `0411261809`
+
+- Added `--reasoning-level` to configure the requested reasoning effort from the CLI.
+
 ### Snapshot `0410261708`
 
 - Added platform-aware shell execution guidance so model-requested commands target the active OS and shell.

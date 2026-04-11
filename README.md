@@ -60,13 +60,22 @@ macOS / Linux:
 `python3 gpt.py`
 `python3 gpt.py -h`
 `python3 gpt.py --help`
+`python3 gpt.py --reasoning-level high`
 
 Windows:
 `py gpt.py`
 `py gpt.py -h`
+`py gpt.py --reasoning-level high`
 or
 `python gpt.py`
 `python gpt.py -h`
+`python gpt.py --reasoning-level high`
+
+Available reasoning levels:
+`minimal`, `low`, `medium`, `high`
+
+Use `--hide-reasoning` to disable reasoning summaries entirely. When reasoning is
+enabled, `--reasoning-level` controls the requested effort level.
 
 Optional checks:
 `python3 -m pip show openai`
