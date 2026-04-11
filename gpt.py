@@ -155,11 +155,6 @@ def parse_args() -> argparse.Namespace:
             "Model options:\n"
             "  --model accepts any model ID available to your account.\n"
             "  Common choices include gpt-5.4 and gpt-5.4-mini.\n\n"
-            "Reasoning level options:\n"
-            "  minimal  Lowest reasoning effort.\n"
-            "  low      Reduced reasoning effort.\n"
-            "  medium   Balanced reasoning effort. Default.\n"
-            "  high     Highest reasoning effort."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
