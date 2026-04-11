@@ -75,7 +75,8 @@ Available reasoning levels:
 `minimal`, `low`, `medium`, `high`
 
 Use `--hide-reasoning` to disable reasoning summaries entirely. When reasoning is
-enabled, `--reasoning-level` controls the requested effort level.
+enabled, `--reasoning-level` controls the requested effort level. The default is
+`medium`.
 
 Optional checks:
 `python3 -m pip show openai`
