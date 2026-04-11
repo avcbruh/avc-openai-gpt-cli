@@ -1,0 +1,12 @@
+User Input Responsibility Notice
+
+This software is a general-purpose interface for interacting with a language model.
+Users are solely responsible for any prompts, files, commands, data, credentials,
+personal information, or other content they choose to provide to the software or
+to any connected model or service.
+
+The author does not review, control, endorse, or assume responsibility for user-
+supplied content, for decisions to disclose sensitive information, or for outputs
+or downstream consequences arising from materials submitted by the user.
+
+Use of this software is at the user's own discretion and risk.
