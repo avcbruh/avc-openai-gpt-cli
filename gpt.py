@@ -148,8 +148,8 @@ def parse_args() -> argparse.Namespace:
     """Parse command-line arguments for interactive and one-shot usage."""
     parser = argparse.ArgumentParser(
         description=(
-            "Minimal GPT-style chat client with user controlled direct "
-            "command execution."
+            "A Python CLI wrapper for the OpenAI Responses API with "
+            "explicit user control over command execution."
         ),
         epilog=(
             "Model options:\n"
