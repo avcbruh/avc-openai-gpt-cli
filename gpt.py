@@ -23,7 +23,7 @@ COMMAND_TIMEOUT_SECONDS = 120
 MAX_MODEL_OUTPUT_CHARS = 12000
 MODEL_OUTPUT_HEAD_CHARS = 5000
 MODEL_OUTPUT_TAIL_CHARS = 5000
-VERSION = "gpt.py SNAPSHOT 0411261809"
+VERSION = "gpt.py SNAPSHOT 0411261831"
 SPINNER_FRAMES = ("/", "-", "\\", "|")
 SPINNER_INTERVAL_SECONDS = 0.1
 REASONING_EFFORT_LEVELS = ("minimal", "low", "medium", "high")
@@ -149,8 +149,19 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Minimal GPT-style chat client with user controlled direct "
-            "command execution"
-        )
+            "command execution."
+        ),
+        epilog=(
+            "Model options:\n"
+            "  --model accepts any model ID available to your account.\n"
+            "  Common choices include gpt-5.4 and gpt-5.4-mini.\n\n"
+            "Reasoning level options:\n"
+            "  minimal  Lowest reasoning effort.\n"
+            "  low      Reduced reasoning effort.\n"
+            "  medium   Balanced reasoning effort. Default.\n"
+            "  high     Highest reasoning effort."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
         "-v",
@@ -162,7 +173,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--model",
         default="gpt-5.4",
-        help="Model to use when dispatching chat completions.",
+        help=(
+            "Model to use when dispatching chat completions. "
+            "Accepts any model ID available to your account. "
+            "Default: %(default)s."
+        ),
     )
     parser.add_argument(
         "--system-prompt",
@@ -173,7 +188,7 @@ def parse_args() -> argparse.Namespace:
         "--log-dir",
         type=Path,
         default=Path.cwd(),
-        help="Directory to write rolling log files (defaults to CWD).",
+        help="Directory to write rolling log files. Default: current working directory.",
     )
     parser.add_argument(
         "--prompt",
@@ -189,7 +204,10 @@ def parse_args() -> argparse.Namespace:
         "--reasoning-level",
         choices=REASONING_EFFORT_LEVELS,
         default="medium",
-        help="Reasoning effort to request when reasoning is enabled.",
+        help=(
+            "Reasoning effort to request when reasoning is enabled. "
+            "Choices: %(choices)s. Default: %(default)s."
+        ),
     )
     return parser.parse_args()
 

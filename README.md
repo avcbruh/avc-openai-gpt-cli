@@ -71,6 +71,7 @@ Optional checks:
 ## Usage
 
 All command-line options:
+- `-h`, `--help`: Show the help message and exit.
 - `-v`, `--version`: Show the snapshot string and exit.
 - `--model MODEL`: Choose the model to use. Default: `gpt-5.4`.
 - `--system-prompt TEXT`: Override the default system prompt.
@@ -82,12 +83,6 @@ All command-line options:
 Model options:
 - `--model` accepts any model ID available to your account.
 - Common choices include `gpt-5.4` and `gpt-5.4-mini`.
-
-Reasoning level options:
-- `minimal`: Lowest reasoning effort.
-- `low`: Reduced reasoning effort.
-- `medium`: Balanced reasoning effort. Default.
-- `high`: Highest reasoning effort.
 
 ## License
 

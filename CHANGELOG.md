@@ -2,6 +2,10 @@
 
 ## 2026-04-11
 
+### Snapshot `0411261831`
+
+- Expanded `gpt.py --help` text to include clearer option descriptions plus model and reasoning-level guidance from `README.md`.
+
 ### Snapshot `0411261809`
 
 - Added `--reasoning-level` to configure the requested reasoning effort from the CLI with supported levels `minimal`, `low`, `medium`, and `high`; the default is `medium`.
