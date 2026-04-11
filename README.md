@@ -58,29 +58,36 @@ To make the variable persistent, add it in your shell profile or Windows user en
 
 macOS / Linux:
 `python3 gpt.py`
-`python3 gpt.py -h`
-`python3 gpt.py --help`
-`python3 gpt.py --reasoning-level high`
 
 Windows:
 `py gpt.py`
-`py gpt.py -h`
-`py gpt.py --reasoning-level high`
 or
 `python gpt.py`
-`python gpt.py -h`
-`python gpt.py --reasoning-level high`
-
-Available reasoning levels:
-`minimal`, `low`, `medium`, `high`
-
-Use `--hide-reasoning` to disable reasoning summaries entirely. When reasoning is
-enabled, `--reasoning-level` controls the requested effort level. The default is
-`medium`.
 
 Optional checks:
 `python3 -m pip show openai`
 `py -m pip show openai`
+
+## Usage
+
+All command-line options:
+- `-v`, `--version`: Show the snapshot string and exit.
+- `--model MODEL`: Choose the model to use. Default: `gpt-5.4`.
+- `--system-prompt TEXT`: Override the default system prompt.
+- `--log-dir PATH`: Write session log files to a specific directory. Default: current working directory.
+- `--prompt TEXT`: Run a single prompt without entering the interactive loop.
+- `--hide-reasoning`: Disable reasoning summary requests and printing.
+- `--reasoning-level {minimal,low,medium,high}`: Set reasoning effort when reasoning is enabled. Default: `medium`.
+
+Model options:
+- `--model` accepts any model ID available to your account.
+- Common choices include `gpt-5.4` and `gpt-5.4-mini`.
+
+Reasoning level options:
+- `minimal`: Lowest reasoning effort.
+- `low`: Reduced reasoning effort.
+- `medium`: Balanced reasoning effort. Default.
+- `high`: Highest reasoning effort.
 
 ## License
 
