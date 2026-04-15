@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-04-15
+
+### Snapshot `0415260805`
+
+- Changed Windows elevation handling so `gpt.py` no longer attempts to self-elevate by opening a new PowerShell window.
+- Added a guard that skips `Start-Process -Verb RunAs` and similar `runas`-style commands and tells the user to rerun `gpt.py` from PowerShell opened as Administrator for admin tasks.
+- Updated `README.md` to document that Windows administrative commands should be run from an Administrator PowerShell session started before launching `gpt.py`.
+
 ## 2026-04-11
 
 ### Snapshot `0411261831`

@@ -64,6 +64,11 @@ Windows:
 or
 `python gpt.py`
 
+Windows administrative tasks:
+If a requested command needs administrator rights, do not try to elevate from inside `gpt.py`.
+Instead, close the current session and start PowerShell as Administrator first, then run `py gpt.py`
+or `python gpt.py` from that elevated PowerShell window.
+
 Optional checks:
 `python3 -m pip show openai`
 `py -m pip show openai`
