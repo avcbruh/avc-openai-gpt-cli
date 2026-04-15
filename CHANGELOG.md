@@ -2,6 +2,10 @@
 
 ## 2026-04-15
 
+### Snapshot `0415260842`
+
+- Added the full MIT license text from `LICENSE` to the top of `gpt.py` as a comment header while preserving the shebang.
+
 ### Snapshot `0415260805`
 
 - Changed Windows elevation handling so `gpt.py` no longer attempts to self-elevate by opening a new PowerShell window.
