@@ -51,8 +51,10 @@ def get_command_shell_profile() -> Dict[str, object]:
                 "name": shell_name,
                 "example": "Get-ChildItem",
                 "admin_hint": (
-                    "If administrator privileges are required, prefer a PowerShell "
-                    "command that clearly indicates elevation is needed instead of using sudo."
+                    "Do not try to self-elevate, open a new PowerShell window, or use "
+                    "Start-Process/RunAs. If administrator privileges are required, tell "
+                    "the user to close this session and rerun gpt.py from a PowerShell "
+                    "window that was already opened as Administrator."
                 ),
                 "runner": [powershell, "-NoProfile", "-Command"],
             }
@@ -61,8 +63,10 @@ def get_command_shell_profile() -> Dict[str, object]:
             "name": Path(comspec).name,
             "example": "dir",
             "admin_hint": (
-                "If administrator privileges are required, describe the need clearly "
-                "because Windows does not use sudo."
+                "Do not try to self-elevate or open a new console window. If "
+                "administrator privileges are required, tell the user to close this "
+                "session and rerun gpt.py from a shell that was already opened as "
+                "Administrator."
             ),
             "runner": [comspec, "/c"],
         }
@@ -120,6 +124,18 @@ def is_privileged_command(command: str) -> bool:
     if lowered.startswith("runas ") or lowered == "runas":
         return True
     return "runas" in lowered and "start-process" in lowered
+
+
+def is_windows_self_elevation_command(command: str) -> bool:
+    """Return True for Windows commands that try to elevate in a new process."""
+    lowered = command.strip().lower()
+    if not lowered:
+        return False
+    if "start-process" in lowered and "-verb runas" in lowered:
+        return True
+    if lowered.startswith("runas ") or " runas " in lowered:
+        return True
+    return "powershell" in lowered and "-verb runas" in lowered
 
 
 def confirm_command(command: str) -> bool:
@@ -302,6 +318,20 @@ def run_shell_commands(commands: List[str]) -> tuple[List[str], List[str]]:
     model_command_logs: List[str] = []
     command_runner = list(get_command_shell_profile()["runner"])
     for command in commands:
+        if os.name == "nt" and is_windows_self_elevation_command(command):
+            log_entry = (
+                f"Command: {command}\n"
+                "Skipped: Windows self-elevation is disabled. Ask the user to rerun "
+                "gpt.py from a PowerShell window opened as Administrator, then retry "
+                "the administrative command in that session."
+            )
+            command_logs.append(log_entry)
+            model_command_logs.append(log_entry)
+            print(
+                "\033[93mShell runner\033[0m: skipped Windows self-elevation command.\n"
+                "Run gpt.py from an Administrator PowerShell window for admin tasks."
+            )
+            continue
         if not confirm_command(command):
             log_entry = (
                 f"Command: {command}\n"
