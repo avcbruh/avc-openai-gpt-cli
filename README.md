@@ -100,8 +100,9 @@ Build locally:
 Run locally:
 `docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" gpt-snapshot:latest`
 
-If you use VS Code, you can also build the same image with the Microsoft
-`Container Tools` extension.
+Persist log files on the host:
+`mkdir -p logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" gpt-snapshot:latest python gpt.py --log-dir /logs`
 
 ## License
 
