@@ -10,3 +10,4 @@ venv/
 dist/
 build/
 dockerpublish.txt
+README.DOCKERHUB.md
