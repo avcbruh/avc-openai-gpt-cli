@@ -2,7 +2,7 @@
 
 ## Installation
 
-Install requirements for `gpt.py`
+Install the requirements for `gpt.py`.
 
 Python modules used by `gpt.py`:
 - Standard library: `argparse`, `datetime`, `os`, `platform`, `secrets`, `shutil`, `subprocess`, `sys`, `pathlib`, `typing`
@@ -75,7 +75,7 @@ Optional checks:
 
 ## Usage
 
-All command-line options:
+Command-line options:
 - `-h`, `--help`: Show the help message and exit.
 - `-v`, `--version`: Show the snapshot string and exit.
 - `--model MODEL`: Choose the model to use. Default: `gpt-5.4`.
@@ -85,9 +85,23 @@ All command-line options:
 - `--hide-reasoning`: Disable reasoning summary requests and printing.
 - `--reasoning-level {minimal,low,medium,high}`: Set reasoning effort when reasoning is enabled. Default: `medium`.
 
-Model options:
+Model notes:
 - `--model` accepts any model ID available to your account.
 - Common choices include `gpt-5.4` and `gpt-5.4-mini`.
+
+## Docker
+
+This repository includes Docker packaging for building and publishing a
+container image.
+
+Build locally:
+`docker build -t gpt-snapshot:latest .`
+
+Run locally:
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" gpt-snapshot:latest`
+
+If you use VS Code, you can also build the same image with the Microsoft
+`Container Tools` extension.
 
 ## License
 
