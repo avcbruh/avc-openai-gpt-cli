@@ -16,23 +16,16 @@ GitHub repository:
 
 Example tags:
 - `latest`
-- `0419261034`
 
 ## Pull
 
 `docker pull jelangley/avc-openai-gpt-cli:latest`
 
-or
-
-`docker pull jelangley/avc-openai-gpt-cli:0419261034`
 
 ## Run
 
 `docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:latest`
 
-To run a specific snapshot:
-
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:0419261034`
 
 ## CLI Parameters
 

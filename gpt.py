@@ -38,13 +38,13 @@ from typing import Dict, List
 
 from openai import OpenAI
 
+VERSION = "gpt.py SNAPSHOT 0419261052"
 COMMAND_MARKER_PREFIX = "[[RUN:"
 COMMAND_MARKER_SUFFIX = "]]"
 COMMAND_TIMEOUT_SECONDS = 120
 MAX_MODEL_OUTPUT_CHARS = 12000
 MODEL_OUTPUT_HEAD_CHARS = 5000
 MODEL_OUTPUT_TAIL_CHARS = 5000
-VERSION = "gpt.py SNAPSHOT 0419261034"
 SPINNER_FRAMES = ("/", "-", "\\", "|")
 SPINNER_INTERVAL_SECONDS = 0.1
 REASONING_EFFORT_LEVELS = ("minimal", "low", "medium", "high")
@@ -426,7 +426,8 @@ def prompt_loop(
     """Run the interactive prompt loop until the user submits an empty prompt."""
     messages = build_initial_messages(system_prompt, command_marker)
     print(
-        "\n:::\033[97mWelcome to OpenAI GPT\033[0m:::\n\n"
+        "\n:::\033[97mWelcome to OpenAI GPT\033[0m:::\n"
+        f"{VERSION}\n\n"
         "Enter an empty prompt to exit.\n"
     )
     while True:

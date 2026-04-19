@@ -37,7 +37,6 @@ or
 `python -m pip install --upgrade openai`
 
 4. Set your OpenAI API key in the `OPENAI_API_KEY` environment variable.
-Do not hardcode the key in the `gpt.py` script.
 
 macOS / Linux, current shell session:
 `export OPENAI_API_KEY="your_api_key_here"`

@@ -41,7 +41,6 @@ or
 `python -m pip install --upgrade openai`
 
 4. Set your OpenAI API key in the `OPENAI_API_KEY` environment variable.
-Do not hardcode the key in the `gpt.py` script.
 
 macOS / Linux, current shell session:
 `export OPENAI_API_KEY="your_api_key_here"`
@@ -97,19 +96,13 @@ Published Docker Hub image:
 Pull the latest image:
 `docker pull jelangley/avc-openai-gpt-cli:latest`
 
-Pull a specific snapshot:
-`docker pull jelangley/avc-openai-gpt-cli:0419261034`
-
 Run the latest image:
 `docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:latest`
-
-Run a specific snapshot:
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:0419261034`
 
 Persist log files on the host:
 `mkdir -p logs`
 
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:0419261034 python gpt.py --log-dir /logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest python gpt.py --log-dir /logs`
 
 ## License
 

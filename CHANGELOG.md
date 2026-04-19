@@ -2,6 +2,10 @@
 
 ## 2026-04-19
 
+### Snapshot `0419261052`
+
+- Added the snapshot version string to the interactive CLI welcome banner shown at startup.
+
 ### Snapshot `0419261034`
 
 - Removed the unused `explicit_key` parameter from `resolve_api_key()` so the function signature now matches its environment-only behavior.

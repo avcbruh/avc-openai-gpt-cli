@@ -9,5 +9,5 @@ __pycache__/
 venv/
 dist/
 build/
-dockerpublish.txt
+dockerpublish.sh
 README.DOCKERHUB.md
