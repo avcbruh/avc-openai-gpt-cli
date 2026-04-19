@@ -102,7 +102,7 @@ Run the latest image:
 Persist log files on the host:
 `mkdir -p logs`
 
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest python gpt.py --log-dir /logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest --log-dir /logs`
 
 ## License
 

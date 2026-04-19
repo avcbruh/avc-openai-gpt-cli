@@ -38,7 +38,7 @@ from typing import Dict, List
 
 from openai import OpenAI
 
-VERSION = "gpt.py SNAPSHOT 0419261052"
+VERSION = "avc-openai-gpt-cli SNAPSHOT 0419261119"
 COMMAND_MARKER_PREFIX = "[[RUN:"
 COMMAND_MARKER_SUFFIX = "]]"
 COMMAND_TIMEOUT_SECONDS = 120

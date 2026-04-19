@@ -2,6 +2,11 @@
 
 ## 2026-04-19
 
+### Snapshot `0419261119`
+
+- Changed the Docker image to use an entrypoint so `docker run ... --flags` passes CLI options directly to `gpt.py`.
+- Updated `README.DOCKERHUB.md` examples to show the bare-flag Docker invocation supported by the image.
+
 ### Snapshot `0419261052`
 
 - Added the snapshot version string to the interactive CLI welcome banner shown at startup.

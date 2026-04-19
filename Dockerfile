@@ -15,4 +15,5 @@ COPY NOTICE .
 COPY CHANGELOG.md .
 COPY INSTALL .
 
-CMD ["python", "gpt.py"]
+ENTRYPOINT ["python", "gpt.py"]
+CMD []

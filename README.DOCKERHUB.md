@@ -68,7 +68,7 @@ on the host, mount a local directory and pass `--log-dir`.
 
 `mkdir -p logs`
 
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest python gpt.py --log-dir /logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest --log-dir /logs`
 
 ## License
 
