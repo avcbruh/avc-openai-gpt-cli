@@ -98,18 +98,18 @@ Pull the latest image:
 `docker pull jelangley/avc-openai-gpt-cli:latest`
 
 Pull a specific snapshot:
-`docker pull jelangley/avc-openai-gpt-cli:0415260842`
+`docker pull jelangley/avc-openai-gpt-cli:0419261034`
 
 Run the latest image:
 `docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:latest`
 
 Run a specific snapshot:
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:0415260842`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" jelangley/avc-openai-gpt-cli:0419261034`
 
 Persist log files on the host:
 `mkdir -p logs`
 
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:0415260842 python gpt.py --log-dir /logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:0419261034 python gpt.py --log-dir /logs`
 
 ## License
 

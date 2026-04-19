@@ -44,7 +44,7 @@ COMMAND_TIMEOUT_SECONDS = 120
 MAX_MODEL_OUTPUT_CHARS = 12000
 MODEL_OUTPUT_HEAD_CHARS = 5000
 MODEL_OUTPUT_TAIL_CHARS = 5000
-VERSION = "gpt.py SNAPSHOT 0415260842"
+VERSION = "gpt.py SNAPSHOT 0419261034"
 SPINNER_FRAMES = ("/", "-", "\\", "|")
 SPINNER_INTERVAL_SECONDS = 0.1
 REASONING_EFFORT_LEVELS = ("minimal", "low", "medium", "high")
@@ -244,8 +244,8 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_api_key(explicit_key: str | None) -> str:
-    """Resolve the API key from the CLI flag or environment."""
+def resolve_api_key() -> str:
+    """Resolve the API key from the environment."""
     key = os.getenv("OPENAI_API_KEY")
     if not key:
         sys.exit("OpenAI API key missing. Set the OPENAI_API_KEY environment variable.")
@@ -633,7 +633,7 @@ def run_single_prompt(
 def main() -> None:
     """Initialize the client and dispatch interactive or one-shot execution."""
     args = parse_args()
-    api_key = resolve_api_key(None)
+    api_key = resolve_api_key()
     client = OpenAI(api_key=api_key)
     log_file = build_log_file(args.log_dir)
     command_marker = build_command_marker()

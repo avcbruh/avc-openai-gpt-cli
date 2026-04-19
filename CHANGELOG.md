@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-19
+
+### Snapshot `0419261034`
+
+- Removed the unused `explicit_key` parameter from `resolve_api_key()` so the function signature now matches its environment-only behavior.
+
 ## 2026-04-15
 
 ### Snapshot `0415260842`
