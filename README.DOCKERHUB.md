@@ -68,7 +68,16 @@ on the host, mount a local directory and pass `--log-dir`.
 
 `mkdir -p logs`
 
-`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest --log-dir /logs`
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -e TZ="America/Chicago" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest --log-dir /logs`
+
+## Container Time Zone
+
+Log timestamps come from the container's local time zone. If you want log files
+to use your local time instead of the container default, pass a `TZ`
+environment variable when you start the container.
+
+Example:
+`docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -e TZ="America/Chicago" jelangley/avc-openai-gpt-cli:latest`
 
 ## License
 
