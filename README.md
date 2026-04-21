@@ -105,7 +105,7 @@ Persist log files on the host:
 `docker run -it --rm -e OPENAI_API_KEY="your_api_key_here" -v "$(pwd)/logs:/logs" jelangley/avc-openai-gpt-cli:latest --log-dir /logs`
 
 MacOS additional access for logging, give Docker access to one or both of the following:
-`System Settings > Privacy & Security > Files and Folders`
+`System Settings > Privacy & Security > Files and Folders` and
 `System Settings > Privacy & Security > Full Disk Access`
 
 SELinux additional access for logging, add :Z to the bind mount:
