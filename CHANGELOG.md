@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-04-21
+
+### Snapshot `0421260757`
+
+- Moved the snapshot version string above the interactive `Welcome to OpenAI GPT` banner.
+- Added a blank line between the version string and the welcome banner at startup.
+
 ## 2026-04-19
 
 ### Snapshot `0419261119`
