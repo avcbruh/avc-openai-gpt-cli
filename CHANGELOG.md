@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-27
+
+### Snapshot `0427260836`
+
+- Changed the default model from `gpt-5.4` to `gpt-5.5`.
+
 ## 2026-04-21
 
 ### Snapshot `0421260757`

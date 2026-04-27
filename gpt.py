@@ -38,7 +38,7 @@ from typing import Dict, List
 
 from openai import OpenAI
 
-VERSION = "avc-openai-gpt-cli SNAPSHOT 0421260757"
+VERSION = "avc-openai-gpt-cli SNAPSHOT 0427260836"
 COMMAND_MARKER_PREFIX = "[[RUN:"
 COMMAND_MARKER_SUFFIX = "]]"
 COMMAND_TIMEOUT_SECONDS = 120
@@ -191,7 +191,7 @@ def parse_args() -> argparse.Namespace:
         epilog=(
             "Model options:\n"
             "  --model accepts any model ID available to your account.\n"
-            "  Common choices include gpt-5.4 and gpt-5.4-mini.\n\n"
+            "  Common choices include gpt-5.5 and gpt-5.4-mini.\n\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -204,7 +204,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--model",
-        default="gpt-5.4",
+        default="gpt-5.5",
         help=(
             "Model to use when dispatching chat completions. "
             "Accepts any model ID available to your account. "

@@ -77,7 +77,7 @@ Optional checks:
 Command-line options:
 - `-h`, `--help`: Show the help message and exit.
 - `-v`, `--version`: Show the snapshot string and exit.
-- `--model MODEL`: Choose the model to use. Default: `gpt-5.4`.
+- `--model MODEL`: Choose the model to use. Default: `gpt-5.5`.
 - `--system-prompt TEXT`: Override the default system prompt.
 - `--log-dir PATH`: Write session log files to a specific directory. Default: current working directory.
 - `--prompt TEXT`: Run a single prompt without entering the interactive loop.
@@ -86,7 +86,7 @@ Command-line options:
 
 Model notes:
 - `--model` accepts any model ID available to your account.
-- Common choices include `gpt-5.4` and `gpt-5.4-mini`.
+- Common choices include `gpt-5.5` and `gpt-5.4-mini`.
 
 ## Docker
 
